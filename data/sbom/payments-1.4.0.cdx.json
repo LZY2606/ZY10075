@@ -1,0 +1,447 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:00000000-0000-4000-8000-000000000140",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-01T00:00:00Z",
+    "component": {
+      "type": "container",
+      "bom-ref": "payments-api",
+      "name": "registry.example.com/payments-api",
+      "version": "1.4.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a100000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:ImageRepository",
+          "value": "registry.example.com/payments-api"
+        },
+        {
+          "name": "aquasecurity:trivy:ImageTag",
+          "value": "1.4.0"
+        },
+        {
+          "name": "aquasecurity:trivy:ImageDigest",
+          "value": "sha256:a100000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/left-pad@1.3.0",
+      "purl": "pkg:npm/left-pad@1.3.0",
+      "name": "left-pad",
+      "version": "1.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b200000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Open Source Collective"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/left-pad/-/left-pad-1.3.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/logfmt@2.1.0",
+      "purl": "pkg:npm/logfmt@2.1.0",
+      "name": "logfmt",
+      "version": "2.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c300000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Logfmt Maintainers"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/logfmt/-/logfmt-2.1.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+      "group": "org.apache.logging.log4j",
+      "name": "log4j-core",
+      "version": "2.14.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d400000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Apache Software Foundation"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.14.0/log4j-core-2.14.0.jar"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/readline@0.1.0",
+      "purl": "pkg:pypi/readline@0.1.0",
+      "name": "readline",
+      "version": "0.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e500000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-only"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "PyPI Uploader"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://files.pythonhosted.org/packages/readline-0.1.0.tar.gz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/lib-readline@0.2.0",
+      "purl": "pkg:npm/lib-readline@0.2.0",
+      "name": "lib-readline",
+      "version": "0.2.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f600000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Readline Wrapper Team"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/lib-readline/-/lib-readline-0.2.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/recalled-pkg@0.9.0",
+      "purl": "pkg:pypi/recalled-pkg@0.9.0",
+      "name": "recalled-pkg",
+      "version": "0.9.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Recalled Author"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://files.pythonhosted.org/packages/recalled_pkg-0.9.0.tar.gz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/dark-mirror-lib@1.0.0",
+      "purl": "pkg:npm/dark-mirror-lib@1.0.0",
+      "name": "dark-mirror-lib",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2200000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "malware-mirror crew"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://evil-mirror.example.com/dark-mirror-lib-1.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chain-a@1.0.0",
+      "purl": "pkg:npm/chain-a@1.0.0",
+      "name": "chain-a",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3300000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Chain Authors"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/chain-a/-/chain-a-1.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chain-b@1.0.0",
+      "purl": "pkg:npm/chain-b@1.0.0",
+      "name": "chain-b",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4400000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Chain Authors"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/chain-b/-/chain-b-1.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chain-c@1.0.0",
+      "purl": "pkg:npm/chain-c@1.0.0",
+      "name": "chain-c",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5500000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Chain Authors"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/chain-c/-/chain-c-1.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chain-d@1.0.0",
+      "purl": "pkg:npm/chain-d@1.0.0",
+      "name": "chain-d",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6600000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Chain Authors"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/chain-d/-/chain-d-1.0.0.tgz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/chain-e@1.0.0",
+      "purl": "pkg:npm/chain-e@1.0.0",
+      "name": "chain-e",
+      "version": "1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8800000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "Chain Authors"
+      },
+      "externalRefs": [
+        {
+          "referenceType": "distribution",
+          "locator": "https://registry.npmjs.org/chain-e/-/chain-e-1.0.0.tgz"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "payments-api",
+      "dependencies": [
+        "pkg:npm/left-pad@1.3.0",
+        "pkg:npm/logfmt@2.1.0",
+        "pkg:npm/chain-a@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/left-pad@1.3.0",
+      "dependencies": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+        "pkg:npm/dark-mirror-lib@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/logfmt@2.1.0",
+      "dependencies": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+        "pkg:pypi/readline@0.1.0",
+        "pkg:npm/lib-readline@0.2.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/lib-readline@0.2.0",
+      "dependencies": [
+        "pkg:pypi/readline@0.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+      "dependencies": [
+        "pkg:pypi/recalled-pkg@0.9.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/chain-a@1.0.0",
+      "dependencies": [
+        "pkg:npm/chain-b@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/chain-b@1.0.0",
+      "dependencies": [
+        "pkg:npm/chain-c@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/chain-c@1.0.0",
+      "dependencies": [
+        "pkg:npm/chain-d@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/chain-d@1.0.0",
+      "dependencies": [
+        "pkg:npm/chain-e@1.0.0"
+      ]
+    }
+  ]
+}

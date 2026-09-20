@@ -34,3 +34,6 @@ coverage/
 .vite/
 .turbo/
 *.tsbuildinfo
+
+# runtime-generated state (deterministically re-seeded)
+data/state/

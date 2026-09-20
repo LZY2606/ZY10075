@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ev-readline-ghsa",
+    "kind": "advisory",
+    "aPurl": "pkg:pypi/readline@0.1.0",
+    "bPurl": "pkg:npm/lib-readline@0.2.0",
+    "source": "https://advisories.example/GHSA-readline-name-confusion",
+    "confidence": "medium",
+    "note": "Advisory claims identity; cross-ecosystem claim REQUIRES strong evidence and is intentionally rejected (name collision test)."
+  },
+  {
+    "id": "ev-log4j-rename-high",
+    "kind": "purl-alias",
+    "aPurl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+    "bPurl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1",
+    "source": "https://logging.apache.org/log4j/2.x/security.html",
+    "confidence": "high",
+    "note": "Upstream release mapping between vulnerable and fixed versions (same coordinate, different version)"
+  },
+  {
+    "id": "ev-weak-single",
+    "kind": "vcs-locator",
+    "aPurl": "pkg:npm/chain-a@1.0.0",
+    "bPurl": "pkg:npm/chain-b@1.0.0",
+    "source": "https://example.com/unsourced-mapping",
+    "confidence": "medium",
+    "note": "Single medium claim - must be rejected (insufficient evidence)."
+  }
+]

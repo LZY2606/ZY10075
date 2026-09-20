@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SBOM Policy Gate</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SBOM Policy Gate <span class="sub">CycloneDX / SPDX · 确定性策略审批</span></div>
+    <div class="clock">
+      <label>评估时刻（显式时区）</label>
+      <input id="at" value="2026-09-15T12:00:00+09:00" spellcheck="false" />
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="scan" class="active">扫描与拒绝路径</button>
+    <button data-tab="exceptions">例外审批</button>
+    <button data-tab="whatif">What-if 方案对比</button>
+    <button data-tab="versions">镜像版本对比</button>
+    <button data-tab="history">历史与事件</button>
+    <button data-tab="audit">审计包</button>
+  </nav>
+
+  <main>
+    <!-- ============ SCAN ============ -->
+    <section id="tab-scan" class="tab active">
+      <div class="toolbar">
+        <label>镜像清单
+          <select id="scan-manifest"></select>
+        </label>
+        <label>策略版本
+          <select id="scan-policy"></select>
+        </label>
+        <button id="scan-run" class="primary">运行评估</button>
+        <span id="scan-status" class="status"></span>
+      </div>
+      <div id="scan-result"></div>
+    </section>
+
+    <!-- ============ EXCEPTIONS ============ -->
+    <section id="tab-exceptions" class="tab">
+      <div class="toolbar">
+        <h3>策略例外（绑定组件坐标 · 规则版本 · 镜像指纹 · 有效期 · 依赖路径）</h3>
+      </div>
+      <div class="toolbar">
+        <button id="exc-new">为选中 finding 申请例外</button>
+        <span class="hint">在“扫描”页先展开一个 finding，再回到这里申请。</span>
+      </div>
+      <div id="exc-form" class="card hidden"></div>
+      <div id="exc-list"></div>
+    </section>
+
+    <!-- ============ WHAT-IF ============ -->
+    <section id="tab-whatif" class="tab">
+      <div class="toolbar">
+        <label>基线扫描
+          <select id="wi-scan"></select>
+        </label>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <h4>模拟动作（只作用于候选副本，不改原清单）</h4>
+          <div class="toolbar">
+            <select id="wi-action">
+              <option value="delete-node">删除节点（连带独占子树）</option>
+              <option value="upgrade-node">升级节点（改身份与边）</option>
+            </select>
+            <input id="wi-component" placeholder="组件 key，如 npm||dark-mirror-lib|1.0.0" />
+            <input id="wi-version" placeholder="升级目标版本（仅升级时）" />
+            <button id="wi-add">加入方案</button>
+          </div>
+          <ol id="wi-actions"></ol>
+          <button id="wi-run" class="primary">生成候选方案并比较</button>
+        </div>
+        <div class="card" id="wi-result"><h4>风险消失 / 新增</h4><p class="hint">尚未生成方案。</p></div>
+      </div>
+      <div class="card" id="wi-saved"><h4>已保存方案</h4><div id="wi-saved-list"></div></div>
+    </section>
+
+    <!-- ============ VERSIONS ============ -->
+    <section id="tab-versions" class="tab">
+      <div class="toolbar">
+        <label>基线 <select id="cmp-base"></select></label>
+        <label>候选 <select id="cmp-cand"></select></label>
+        <button id="cmp-run" class="primary">比较清单</button>
+      </div>
+      <div id="cmp-result"></div>
+    </section>
+
+    <!-- ============ HISTORY ============ -->
+    <section id="tab-history" class="tab">
+      <div class="toolbar"><h3>历史扫描（显示当时应用的例外版本）与决策事件流</h3></div>
+      <div class="grid2">
+        <div class="card"><h4>历史扫描</h4><div id="hist-scans"></div></div>
+        <div class="card"><h4>事件（撤销产生新事件，不删除历史）</h4><div id="hist-events"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIT ============ -->
+    <section id="tab-audit" class="tab">
+      <div class="toolbar">
+        <button id="audit-export" class="primary">导出审计包 (ZIP)</button>
+        <button id="audit-verify">校验刚导出的包</button>
+        <span id="audit-status" class="status"></span>
+      </div>
+      <div class="card"><h4>已导出包</h4><div id="audit-list"></div></div>
+      <div class="card" id="audit-result"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

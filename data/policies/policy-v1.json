@@ -1,0 +1,53 @@
+{
+  "policyId": "acme-supply-chain",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "id": "R-LIC-GPL",
+      "mode": "deny",
+      "type": "license",
+      "match": "any-selected",
+      "scope": "all",
+      "licenses": ["GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0-only", "GPL-3.0-or-later"],
+      "description": "Copyleft GPL licenses may not be selected by any dependency"
+    },
+    {
+      "id": "R-LIC-ALLOW",
+      "mode": "allow",
+      "type": "license",
+      "match": "all-must-allow",
+      "scope": "all",
+      "licenses": [
+        "MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC",
+        "GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0-only", "GPL-3.0-or-later",
+        "MPL-2.0", "LGPL-2.1-only", "Python-2.0", "Unicode-DFS-2016", "0BSD",
+        "GPL-3.0-only WITH Classpath-exception-2.0"
+      ],
+      "description": "Declared licenses must come from the reviewed license set"
+    },
+    {
+      "id": "R-HASH-DENY",
+      "mode": "deny",
+      "type": "hash",
+      "algorithm": "SHA-256",
+      "digests": ["1111111111111111111111111111111111111111111111111111111111111111"],
+      "description": "Artifact recalled for embedded credential (fixture digest)"
+    },
+    {
+      "id": "R-PROV-SUPPLIER",
+      "mode": "deny",
+      "type": "provenance",
+      "requireSupplier": false,
+      "allowedRegistries": ["registry.npmjs.org", "files.pythonhosted.org", "repo1.maven.org"],
+      "blockedSuppliers": ["malware-mirror"],
+      "description": "Artifacts must come from approved registries"
+    },
+    {
+      "id": "R-DEPTH",
+      "mode": "deny",
+      "type": "depth",
+      "maxDepth": 4,
+      "description": "Dependency chains deeper than 4 edges are not accepted"
+    }
+  ]
+}
