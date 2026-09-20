@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SBOM Policy Guard</title>
+    <link rel="stylesheet" href="/src/ui/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◆</span>
+        <div>
+          <h1>SBOM Policy Guard</h1>
+          <p>清单比较 · 有边界例外审批 · 可验证审计</p>
+        </div>
+      </div>
+      <div class="clock">
+        <span>结算时钟（显式）</span>
+        <input id="demoClock" value="2026-09-21T03:00:00Z" />
+        <button id="reseedBtn" class="ghost" title="恢复确定性种子状态">重置种子</button>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button data-tab="evaluate" class="active">评估与路径</button>
+      <button data-tab="plan">候选方案</button>
+      <button data-tab="exceptions">例外审批</button>
+      <button data-tab="history">历史扫描</button>
+      <button data-tab="audit">审计包</button>
+      <button data-tab="state">清单与策略</button>
+    </nav>
+
+    <main>
+      <section data-panel="evaluate" class="panel active">
+        <div class="toolbar">
+          <label>镜像
+            <select id="evalImage"></select>
+          </label>
+          <label>策略版本
+            <select id="evalPolicy"></select>
+          </label>
+          <button id="evalRun">运行评估</button>
+          <span id="evalConclusion" class="conclusion"></span>
+        </div>
+        <div id="evalMeta" class="meta"></div>
+        <div id="findings" class="findings"></div>
+      </section>
+
+      <section data-panel="plan" class="panel">
+        <div class="toolbar">
+          <label>镜像
+            <select id="planImage"></select>
+          </label>
+          <label>策略版本
+            <select id="planPolicy"></select>
+          </label>
+          <span class="hint">候选只在本页模拟，原始清单与已保存扫描不变；指纹绑定的例外不会带入候选。</span>
+        </div>
+        <div class="plan-grid">
+          <div>
+            <h3>原清单组件</h3>
+            <div id="planComponents" class="component-list"></div>
+          </div>
+          <div>
+            <h3>候选操作</h3>
+            <div class="plan-actions-row">
+              <select id="actionComponent"></select>
+              <select id="actionKind">
+                <option value="remove">删除节点</option>
+                <option value="upgrade">升级到版本</option>
+              </select>
+              <input id="actionVersion" placeholder="1.3.1" />
+              <button id="addAction">加入候选</button>
+            </div>
+            <ol id="actionList" class="action-list"></ol>
+            <button id="runPlan" class="primary">比较基线与候选</button>
+          </div>
+        </div>
+        <div id="planResult"></div>
+      </section>
+
+      <section data-panel="exceptions" class="panel">
+        <div class="toolbar">
+          <button id="newExceptionBtn">新建例外申请</button>
+          <span class="hint">审批必须给出理由；例外绑定组件坐标 / 策略版本 / 镜像指纹 / 有效期（显式时区）。</span>
+        </div>
+        <div id="exceptionTable"></div>
+        <div id="exceptionDetail" class="detail"></div>
+        <h3>批量审批（乐观修订号；任一被他人改动则整批失败）</h3>
+        <div class="batch-row">
+          <textarea id="batchInput" rows="8" spellcheck="false"></textarea>
+          <div>
+            <button id="batchRun">提交整批</button>
+            <button id="batchSimulate" class="ghost">模拟“他人改动”后再提交</button>
+          </div>
+        </div>
+        <pre id="batchOutput" class="output"></pre>
+      </section>
+
+      <section data-panel="history" class="panel">
+        <div class="toolbar">
+          <button id="recordScan">以当前时钟记录一次扫描</button>
+          <span class="hint">历史扫描保存当时的结论与使用的例外快照。</span>
+        </div>
+        <div id="scanList" class="scan-list"></div>
+        <div id="scanDetail" class="detail"></div>
+      </section>
+
+      <section data-panel="audit" class="panel">
+        <div class="toolbar">
+          <label>导出镜像
+            <select id="auditImage"></select>
+          </label>
+          <label>策略版本
+            <select id="auditPolicy"></select>
+          </label>
+          <button id="exportAudit">导出审计包</button>
+          <button id="verifyAudit">校验审计包</button>
+          <button id="tamperAudit" class="ghost">篡改清单字节后校验（应失败）</button>
+        </div>
+        <pre id="auditOutput" class="output audit"></pre>
+      </section>
+
+      <section data-panel="state" class="panel">
+        <div class="toolbar">
+          <span class="hint">支持粘贴 CycloneDX 或 SPDX JSON 建立新镜像。</span>
+        </div>
+        <div class="plan-grid">
+          <div>
+            <h3>镜像清单</h3>
+            <div id="imageList" class="component-list"></div>
+          </div>
+          <div>
+            <h3>导入清单</h3>
+            <input id="newImageId" placeholder="image-id" />
+            <textarea id="newManifest" rows="10" spellcheck="false" placeholder='{ "bomFormat": "CycloneDX", ... }'></textarea>
+            <button id="importManifest">导入</button>
+            <pre id="importOutput" class="output"></pre>
+          </div>
+        </div>
+        <h3>策略文档</h3>
+        <pre id="policyDump" class="output"></pre>
+      </section>
+    </main>
+
+    <div id="modalBackdrop" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="modalTitle">新建例外申请</h3>
+        <div id="modalBody"></div>
+        <div class="modal-actions">
+          <button id="modalCancel" class="ghost">取消</button>
+          <button id="modalSave" class="primary">提交</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/ui/app.js"></script>
+  </body>
+</html>
